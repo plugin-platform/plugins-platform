@@ -1,4 +1,5 @@
-import { BrowserWindow, BrowserWindowConstructorOptions, WebPreferences } from 'electron'
+import { BrowserWindow, BrowserWindowConstructorOptions, WebPreferences, app } from 'electron'
+import { join } from 'path'
 
 interface WindowMap {
 	[key: string]: BrowserWindow | null
@@ -46,6 +47,7 @@ class ModalWindowConfig implements BrowserWindowConstructorOptions {
 class ConfigWebPreferences implements WebPreferences {
 	nodeIntegration = true
 	contextIsolation = false
+	preload = join(__dirname, '../preload/index.cjs')
 }
 
 const EmptyFunction = () => {}
@@ -79,10 +81,12 @@ class WindowManager {
 			throw new Error('无法识别的schema.config:' + conf)
 		}
 		const win = new BrowserWindow(config)
-		if (process.env.WEBPACK_DEV_SERVER_URL) {
-			win.loadURL(process.env.WEBPACK_DEV_SERVER_URL + page + '/#').catch(EmptyFunction)
-		} else {
+		if (app.isPackaged) {
 			win.loadURL(`app://./${page}.html/#`).catch(EmptyFunction)
+		} else {
+			const url =
+				`http://${process.env['VITE_DEV_SERVER_HOST']}:${process.env['VITE_DEV_SERVER_PORT']}/` + page + '/#'
+			win.loadURL(url).catch(EmptyFunction)
 		}
 		return win
 	}
@@ -113,7 +117,7 @@ class WindowManager {
 			this.UsedWindow[options.uniqueId] = null
 			delete this.UsedWindow[options.uniqueId]
 		})
-		win.setSize(options.width as number, options.height as number, true)
+		options.width && options.height && win.setSize(options.width as number, options.height as number, true)
 		this.isNotEmpty(options.resizable) && win.setResizable(options.resizable as boolean)
 		this.isNotEmpty(options.movable) && win.setMovable(options.movable as boolean)
 		this.isNotEmpty(options.alwaysOnTop) && win.setAlwaysOnTop(options.alwaysOnTop as boolean)
