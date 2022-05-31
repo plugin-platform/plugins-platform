@@ -1,5 +1,3 @@
-import { WindowsManager } from "./libs/WindowsManager";
+import { WindowsManager } from './libs/WindowsManager'
 
-export function createMainWindow() {
-
-}
+export function createMainWindow() {}

@@ -6,7 +6,6 @@
 ![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-vue?color=fa6470&style=flat)
 ![GitHub forks](https://img.shields.io/github/forks/caoxiemeihao/electron-vite-vue?style=flat)
 
-
 **English | [简体中文](README.zh-CN.md)**
 
 🥳 Real simple `Electron` + `Vue` + `Vite` boilerplate.
@@ -17,7 +16,7 @@
 💪 Support C/C++ addons  
 🔩 Support Use Electron、Node.js API in Renderer-process  
 🌱 Simple directory structure，real flexible  
-🖥 It's easy to implement multiple windows  
+🖥 It's easy to implement multiple windows
 
 ## Quick Start
 
@@ -64,11 +63,11 @@ Used in `Renderer-process` 👉 [electron-vite-boilerplate/tree/nodeIntegration]
 
 **ES Modules**
 
-- [execa](https://www.npmjs.com/package/execa)
-- [node-fetch](https://www.npmjs.com/package/node-fetch)
-- [file-type](https://www.npmjs.com/package/file-type)
+-   [execa](https://www.npmjs.com/package/execa)
+-   [node-fetch](https://www.npmjs.com/package/node-fetch)
+-   [file-type](https://www.npmjs.com/package/file-type)
 
 **Native Addons(C/C++)**
 
-- [sqlite3](https://www.npmjs.com/package/sqlite3)
-- [serialport](https://www.npmjs.com/package/serialport)
+-   [sqlite3](https://www.npmjs.com/package/sqlite3)
+-   [serialport](https://www.npmjs.com/package/serialport)

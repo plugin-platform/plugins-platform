@@ -13,10 +13,11 @@ Example: \#123
 Please describe the new behavior or provide screenshots.
 
 #### Does this PR introduce a breaking change?
+
 <!-- If this PR contains a breaking change, please describe the impact and migration path for existing applications below. -->
 
-- [ ] Yes
-- [ ] No
+-   [ ] Yes
+-   [ ] No
 
 #### Specific Instructions
 

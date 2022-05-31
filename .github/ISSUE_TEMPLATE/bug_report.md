@@ -1,10 +1,9 @@
 ---
 name: Bug_Report
 about: Create a report to help us improve
-title: "[Bug] the title of bug report"
+title: '[Bug] the title of bug report'
 labels: bug
 assignees: ''
-
 ---
 
 #### What did I do
@@ -21,8 +20,8 @@ What is the expected result.
 
 #### Environment
 
-- OS: OS version, e.g. macOS Big Sur 11.1
-- electron-vue-vite version (or commit hash), e.g. v1.0.0
+-   OS: OS version, e.g. macOS Big Sur 11.1
+-   electron-vue-vite version (or commit hash), e.g. v1.0.0
 
 #### More detail
 

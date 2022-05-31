@@ -5,7 +5,6 @@
 ![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-vue?color=fa6470&style=flat)
 ![GitHub forks](https://img.shields.io/github/forks/caoxiemeihao/electron-vite-vue?style=flat)
 
-
 **[English](README.md) | 简体中文**
 
 🥳 Electron + Vite + Vue 整合模板 -- **结构简单，容易上手！**
@@ -16,7 +15,7 @@
 💪 支持 C/C++ 模块  
 🔩 支持在渲染进程中使用 Electron、Node.js API  
 🌱 结构清晰，可塑性强  
-🖥 很容易实现多窗口  
+🖥 很容易实现多窗口
 
 ## 快速开始
 
@@ -61,11 +60,11 @@ npm create electron-vite
 
 **ES Modules**
 
-- [execa](https://www.npmjs.com/package/execa)
-- [node-fetch](https://www.npmjs.com/package/node-fetch)
-- [file-type](https://www.npmjs.com/package/file-type)
+-   [execa](https://www.npmjs.com/package/execa)
+-   [node-fetch](https://www.npmjs.com/package/node-fetch)
+-   [file-type](https://www.npmjs.com/package/file-type)
 
 **Native Addons(C/C++)**
 
-- [sqlite3](https://www.npmjs.com/package/sqlite3)
-- [serialport](https://www.npmjs.com/package/serialport)
+-   [sqlite3](https://www.npmjs.com/package/sqlite3)
+-   [serialport](https://www.npmjs.com/package/serialport)
