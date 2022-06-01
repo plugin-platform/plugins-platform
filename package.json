@@ -18,7 +18,7 @@
 		"@playwright/test": "^1.21.1",
 		"@vitejs/plugin-vue": "^2.3.2",
 		"autoprefixer": "^10.4.7",
-		"electron": "19.0.1",
+		"electron": "19.0.2",
 		"electron-builder": "^23.0.3",
 		"nano-staged": "^0.8.0",
 		"postcss": "^8.4.14",
