@@ -1,11 +1,15 @@
 <template>
-	<div id="app"></div>
+	<DragReagon>
+		<div class="container"></div>
+	</DragReagon>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import DragReagon from './components/DragReagon.vue'
+</script>
 
-<style>
-#app {
+<style scoped>
+.container {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

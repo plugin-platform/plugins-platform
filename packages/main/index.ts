@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron'
 import { release } from 'os'
 import { createMainWindow } from './window'
+import { useIPC } from './ipc'
 
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith('6.1')) app.disableHardwareAcceleration()
@@ -17,6 +18,7 @@ process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 let win: BrowserWindow | null = null
 
 app.whenReady().then(() => {
+	useIPC()
 	win = createMainWindow()
 })
 
