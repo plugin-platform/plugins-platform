@@ -1,19 +1,9 @@
 <template>
-	<DragReagon>
-		<div class="container"></div>
-	</DragReagon>
+	<n-config-provider :theme="darkTheme" :locale="zhCN" :date-locale="dateZhCN">
+		<router-view></router-view>
+	</n-config-provider>
 </template>
 
 <script setup lang="ts">
-import DragReagon from './components/DragReagon.vue'
+import { darkTheme, zhCN, dateZhCN } from 'naive-ui'
 </script>
-
-<style scoped>
-.container {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	height: 60px;
-	background-color: #2c3e50;
-}
-</style>

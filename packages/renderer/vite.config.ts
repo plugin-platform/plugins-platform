@@ -1,13 +1,28 @@
+import * as path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import Components from 'unplugin-vue-components/vite'
 import resolve, { lib2esm } from 'vite-plugin-resolve'
 import electron from 'vite-plugin-electron/renderer'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import pkg from '../../package.json'
 
 // https://vitejs.dev/config/
 export default defineConfig({
 	mode: process.env.NODE_ENV,
 	root: __dirname,
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `@import '@/assets/common.scss';`,
+			},
+		},
+	},
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, './src'),
+		},
+	},
 	plugins: [
 		vue(),
 		electron(),
@@ -42,6 +57,9 @@ export default defineConfig({
 				),
 			}
 		),
+		Components({
+			resolvers: [NaiveUiResolver()],
+		}),
 	],
 	base: './',
 	build: {
