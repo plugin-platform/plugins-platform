@@ -232,6 +232,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@vicons/material@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.npmmirror.com/@vicons/material/-/material-0.12.0.tgz#068e72fa40bd7f780af5fc68011fb69010c8e0b5"
+  integrity sha512-chv1CYAl8P32P3Ycwgd5+vw/OFNc2mtkKdb1Rw4T5IJmKy6GVDsoUKV3N2l208HATn7CCQphZtuPDdsm7K2kmA==
+
 "@vitejs/plugin-vue@^2.3.2":
   version "2.3.3"
   resolved "https://registry.npmmirror.com/@vitejs/plugin-vue/-/plugin-vue-2.3.3.tgz#fbf80cc039b82ac21a1acb0f0478de8f61fbf600"
