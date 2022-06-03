@@ -1,5 +1,5 @@
 {
-	"name": "electron-vue-vite",
+	"name": "plugin-platform",
 	"version": "1.0.0",
 	"main": "dist/main/index.cjs",
 	"author": "J.S.Patrick",
@@ -32,6 +32,7 @@
 		"vite-plugin-electron": "^0.4.5",
 		"vite-plugin-resolve": "^2.1.1",
 		"vue": "^3.2.33",
+		"vue-router": "4",
 		"vue-tsc": "^0.35.2"
 	},
 	"env": {
@@ -44,8 +45,5 @@
 		"vite",
 		"vue3",
 		"vue"
-	],
-	"dependencies": {
-		"vue-router": "4"
-	}
+	]
 }

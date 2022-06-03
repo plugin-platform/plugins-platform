@@ -5,6 +5,10 @@ const routes = [
 		path: '/',
 		component: () => import('@/views/index/index.vue'),
 	},
+	{
+		path: '/setting',
+		component: () => import('@/views/setting/index.vue'),
+	},
 ]
 
 const router = createRouter({

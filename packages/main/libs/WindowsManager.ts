@@ -30,6 +30,7 @@ class WindowConfig implements BrowserWindowConstructorOptions {
 	show = false
 	movable = true
 	transparent = true
+	skipTaskbar = false
 	webPreferences = new ConfigWebPreferences()
 }
 class ModalWindowConfig implements BrowserWindowConstructorOptions {
@@ -42,6 +43,7 @@ class ModalWindowConfig implements BrowserWindowConstructorOptions {
 	transparent = true
 	modal = true
 	parent = undefined
+	skipTaskbar = false
 	webPreferences = new ConfigWebPreferences()
 }
 class ConfigWebPreferences implements WebPreferences {
@@ -129,6 +131,8 @@ class WindowManager {
 		this.isNotEmpty(options.maxWidth) && win.setMaximumSize(options.maxWidth as number, options.maxHeight || 0)
 		this.isNotEmpty(options.maxHeight) && win.setMaximumSize(options.maxWidth || 0, options.maxHeight as number)
 		this.isNotEmpty(options.parent) && win.setParentWindow(options.parent as BrowserWindow)
+		this.isNotEmpty(options.skipTaskbar) && win.setSkipTaskbar(options.skipTaskbar as boolean)
+
 		this.isNotEmpty(options.show) && options.show && win.show()
 		if (options.modal && options.parent) {
 			// 当窗口是模态窗时,禁用其父窗口
