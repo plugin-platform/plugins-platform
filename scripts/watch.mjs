@@ -89,7 +89,10 @@ function watchPreload(server) {
 
 // Block the CTRL + C shortcut on a Windows terminal and exit the application without displaying a query
 if (process.platform === 'win32') {
-	readline.createInterface({ input: process.stdin, output: process.stdout }).on('SIGINT', process.exit)
+	readline.createInterface({ input: process.stdin, output: process.stdout }).on('SIGINT', () => {
+		console.log('exit')
+		process.exit()
+	})
 }
 
 // bootstrap

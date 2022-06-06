@@ -2,3 +2,34 @@
 	font-family: Alibaba;
 	src: url('./fonts/AlibabaPuHuiTi-2-55-Regular.ttf');
 }
+
+* {
+	box-sizing: border-box;
+}
+div,
+span,
+p {
+	cursor: default;
+}
+
+.flex {
+	display: flex;
+}
+.fxsb {
+	justify-content: space-between;
+}
+.fxc {
+	justify-content: center;
+}
+.fxsa {
+	justify-content: space-around;
+}
+.fyc {
+	align-items: center;
+}
+
+$bg: #202a35;
+$bg-hover: #153a5d;
+$bg-title: #131d27;
+$text-normal: transparentize(white, 0.2);
+$text-description: #abadaf;
