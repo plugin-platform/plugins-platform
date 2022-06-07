@@ -1,3 +1,4 @@
+import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import { app, BrowserWindow } from 'electron'
 import { release } from 'os'
 import { createMainWindow } from './window'
@@ -19,11 +20,17 @@ if (!gotTheLock) {
 
 let win: BrowserWindow | null = null
 
-app.whenReady().then(() => {
-	useIPC()
-	useApi()
-	win = createMainWindow()
-})
+app.whenReady()
+	.then(() => {
+		if (!app.isPackaged) {
+			installExtension(VUEJS3_DEVTOOLS.id).catch(e => e)
+		}
+	})
+	.then(() => {
+		useIPC()
+		useApi()
+		win = createMainWindow()
+	})
 
 app.on('window-all-closed', () => {
 	win = null

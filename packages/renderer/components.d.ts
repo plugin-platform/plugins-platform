@@ -6,9 +6,9 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     DragReagon: typeof import('./src/components/DragReagon.vue')['default']
-    NButton: typeof import('naive-ui')['NButton']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NIcon: typeof import('naive-ui')['NIcon']
+    NSwitch: typeof import('naive-ui')['NSwitch']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
