@@ -1,9 +1,5 @@
 import { BrowserWindow } from 'electron'
 
-export function getBrowserWindowByWebContentID(webContentID: number) {
-	return BrowserWindow.getAllWindows().find(which => which.webContents.id === webContentID)
-}
-
 export function getWebContentSize(win: BrowserWindow) {
 	if (!win) {
 		return {

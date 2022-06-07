@@ -2,6 +2,9 @@ import { app, BrowserWindow } from 'electron'
 import { release } from 'os'
 import { createMainWindow } from './window'
 import { useIPC } from './ipc'
+import { useApi } from './api'
+
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith('6.1')) app.disableHardwareAcceleration()
@@ -9,16 +12,16 @@ if (release().startsWith('6.1')) app.disableHardwareAcceleration()
 // Set application name for Windows 10+ notifications
 if (process.platform === 'win32') app.setAppUserModelId(app.getName())
 
-if (!app.requestSingleInstanceLock()) {
+const gotTheLock = app.requestSingleInstanceLock()
+if (!gotTheLock) {
 	app.quit()
-	process.exit(0)
 }
-process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
 let win: BrowserWindow | null = null
 
 app.whenReady().then(() => {
 	useIPC()
+	useApi()
 	win = createMainWindow()
 })
 

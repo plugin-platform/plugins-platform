@@ -1,5 +1,7 @@
 <template>
-	<div class="setting-board"></div>
+	<div class="setting-board">
+		<div class="line-item"></div>
+	</div>
 </template>
 
 <script setup>

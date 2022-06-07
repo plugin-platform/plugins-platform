@@ -25,7 +25,7 @@ function onMouseMove(e: MouseEvent) {
 	if (!info.leftDown) {
 		return false
 	}
-	window.$send('move-window', {
+	window.pp.moveMainWindow({
 		x: e.screenX - info.x,
 		y: e.screenY - info.y,
 	})

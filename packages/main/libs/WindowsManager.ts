@@ -47,8 +47,8 @@ class ModalWindowConfig implements BrowserWindowConstructorOptions {
 	webPreferences = new ConfigWebPreferences()
 }
 class ConfigWebPreferences implements WebPreferences {
-	nodeIntegration = true
-	contextIsolation = false
+	nodeIntegration = false
+	contextIsolation = true
 	preload = join(__dirname, '../preload/index.cjs')
 }
 
@@ -87,7 +87,9 @@ class WindowManager {
 			win.loadURL(`app://./${page}.html/#`).catch(EmptyFunction)
 		} else {
 			const url =
-				`http://${process.env['VITE_DEV_SERVER_HOST']}:${process.env['VITE_DEV_SERVER_PORT']}/` + page + '/#'
+				`http://${process.env['VITE_DEV_SERVER_HOST']}:${process.env['VITE_DEV_SERVER_PORT']}/` +
+				page +
+				'/#'
 			win.loadURL(url).catch(EmptyFunction)
 		}
 		return win
@@ -119,17 +121,23 @@ class WindowManager {
 			this.UsedWindow[options.uniqueId] = null
 			delete this.UsedWindow[options.uniqueId]
 		})
-		options.width && options.height && win.setSize(options.width as number, options.height as number, true)
+		options.width &&
+			options.height &&
+			win.setSize(options.width as number, options.height as number, true)
 		this.isNotEmpty(options.resizable) && win.setResizable(options.resizable as boolean)
 		this.isNotEmpty(options.movable) && win.setMovable(options.movable as boolean)
 		this.isNotEmpty(options.alwaysOnTop) && win.setAlwaysOnTop(options.alwaysOnTop as boolean)
 		this.isNotEmpty(options.center) && options.center && win.center()
 		;(this.isNotEmpty(options.x) || this.isNotEmpty(options.y)) &&
 			win.setPosition(options.x || 1, options.y || 1, true)
-		this.isNotEmpty(options.minWidth) && win.setMinimumSize(options.minWidth as number, options.minHeight || 0)
-		this.isNotEmpty(options.minHeight) && win.setMinimumSize(options.minWidth || 0, options.minHeight as number)
-		this.isNotEmpty(options.maxWidth) && win.setMaximumSize(options.maxWidth as number, options.maxHeight || 0)
-		this.isNotEmpty(options.maxHeight) && win.setMaximumSize(options.maxWidth || 0, options.maxHeight as number)
+		this.isNotEmpty(options.minWidth) &&
+			win.setMinimumSize(options.minWidth as number, options.minHeight || 0)
+		this.isNotEmpty(options.minHeight) &&
+			win.setMinimumSize(options.minWidth || 0, options.minHeight as number)
+		this.isNotEmpty(options.maxWidth) &&
+			win.setMaximumSize(options.maxWidth as number, options.maxHeight || 0)
+		this.isNotEmpty(options.maxHeight) &&
+			win.setMaximumSize(options.maxWidth || 0, options.maxHeight as number)
 		this.isNotEmpty(options.parent) && win.setParentWindow(options.parent as BrowserWindow)
 		this.isNotEmpty(options.skipTaskbar) && win.setSkipTaskbar(options.skipTaskbar as boolean)
 

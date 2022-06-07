@@ -1,8 +1,8 @@
 import { BrowserWindow, IpcMainEvent } from 'electron'
-import { getBrowserWindowByWebContentID, getWebContentSize } from '../../libs/Utils'
+import { getWebContentSize } from '../../libs/Utils'
 
 async function handler(e: IpcMainEvent, d: any) {
-	const win = getBrowserWindowByWebContentID(e.sender.id)
+	const win = BrowserWindow.fromWebContents(e.sender)
 	if (!win) {
 		return false
 	}
