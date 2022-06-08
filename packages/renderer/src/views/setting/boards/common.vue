@@ -1,20 +1,48 @@
 <template>
 	<div class="setting-board">
 		<div class="line-item flex fxsb fyc">
-			<div class="name">开机启动</div>
-			<n-switch v-model="config.common.startup" />
+			<div class="name">{{ $t('dashboard.startup') }}</div>
+			<n-switch :value="config.common.startup" @update:value="updateVal" />
+		</div>
+		<div class="line-item select flex fxsb fyc">
+			<div class="name">{{ $t('dashboard.language') }}</div>
+			<n-select
+				v-model:value="currentLanguage"
+				@update:value="whenLanguageChange"
+				:options="languageList"
+			/>
 		</div>
 	</div>
 </template>
 
 <script setup>
-const defaultConfig = {
-	common: {
-		startup: false,
-	},
+import { inject, ref } from 'vue'
+import i18n, { languages, getLocale } from '@/locales'
+
+const config = inject('config')
+
+const updateVal = val => {
+	config.value.common.startup = val
+	window.pp.startup(config.value.common.startup)
 }
-const config = window.localStorage.getItem('config') || defaultConfig
-console.log(config)
+
+const keymap = {
+	en: 'English',
+	'zh-cn': '简体中文',
+}
+const languageList = ref(
+	Object.keys(languages).map(key => {
+		return {
+			value: key,
+			label: keymap[key],
+		}
+	})
+)
+const currentLanguage = ref(getLocale())
+const whenLanguageChange = key => {
+	i18n.global.locale = key
+	window.pp.db.put({ _id: 'language', value: key })
+}
 </script>
 
 <style scoped lang="scss">
@@ -28,6 +56,11 @@ console.log(config)
 	font-size: 16px;
 	.line-item {
 		width: 100%;
+		height: 50px;
+	}
+	.select {
+		display: grid;
+		grid-template-columns: 1fr 100px;
 	}
 }
 </style>

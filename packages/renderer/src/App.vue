@@ -14,7 +14,13 @@ import { darkTheme, zhCN, dateZhCN } from 'naive-ui'
 
 const themeOverrides = {
 	common: {
-		primaryColor: '#202a35',
+		primaryColor: 'rgba(255,255,255,.8)',
+		primaryColorHover: 'rgba(255,255,255,.8)',
+		primaryColorPressed: 'rgba(255,255,255,.8)',
+		primaryColorSuppl: 'rgba(255,255,255,.8)',
+	},
+	Switch: {
+		railColorActive: '#0275d8',
 	},
 }
 </script>

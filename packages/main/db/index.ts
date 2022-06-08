@@ -49,7 +49,9 @@ export class DB {
 			const err = this.checkDocSize(doc)
 			if (err) return err
 		}
+		const source = await this.get(name, doc._id)
 		doc._id = this.getDocId(name, doc._id)
+		doc._rev = (source as any)._rev
 		try {
 			const result: DocRes = await this.pouchDB.put(doc)
 			doc._id = result.id = this.replaceDocId(name, result.id)

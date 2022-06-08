@@ -8,5 +8,6 @@ declare global {
 		$send: IpcRenderer.send
 		$sendSync: IpcRenderer.sendSync
 		removeLoading: () => void
+		pp: any
 	}
 }

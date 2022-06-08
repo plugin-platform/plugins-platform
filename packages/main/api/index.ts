@@ -17,10 +17,17 @@ dbInstance.init()
 
 const API: any = {
 	currentPlugin: null,
+	DBKEY: 'RUBICK_DB_DEFAULT',
 	installPlugin() {},
 	mountPlugin() {},
 	unMountPlugin() {},
 	uninstallPlugin() {},
+
+	startup({ data }) {
+		app.setLoginItemSettings({
+			openAtLogin: data,
+		})
+	},
 
 	showNotification({ data: { body } }) {
 		if (!Notification.isSupported()) return
@@ -55,6 +62,9 @@ const API: any = {
 	dbGet({ data }) {
 		return dbInstance.get(API.DBKEY, data.id)
 	},
+	dbGetSync({ data }) {
+		return dbInstance.get(API.DBKEY, data.id)
+	},
 	dbRemove({ data }) {
 		return dbInstance.remove(API.DBKEY, data.doc)
 	},
@@ -68,12 +78,25 @@ const API: any = {
 	getPath({ data }) {
 		return app.getPath(data)
 	},
+	getConfig() {
+		const loginInfo = app.getLoginItemSettings()
+		return {
+			common: {
+				startup: loginInfo.openAtLogin,
+			},
+		}
+	},
 }
 
-export function useApi() {
+export function useMainApi() {
 	ipcMain.handle('msg-trigger', async (event, arg) => {
 		const window = BrowserWindow.fromWebContents(event.sender)
 		const data = await API[arg.type](arg, window, event)
 		return data
+	})
+	ipcMain.on('msg-trigger', async (event, arg) => {
+		const window = BrowserWindow.fromWebContents(event.sender)
+		const data = await API[arg.type](arg, window, event)
+		event.returnValue = data
 	})
 }

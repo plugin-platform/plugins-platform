@@ -3,7 +3,7 @@ import { app, BrowserWindow } from 'electron'
 import { release } from 'os'
 import { createMainWindow } from './window'
 import { useIPC } from './ipc'
-import { useApi } from './api'
+import { useMainApi } from './api'
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
@@ -28,7 +28,7 @@ app.whenReady()
 	})
 	.then(() => {
 		useIPC()
-		useApi()
+		useMainApi()
 		win = createMainWindow()
 	})
 

@@ -2,24 +2,25 @@
 	<DragReagon>
 		<div class="container">
 			<PMenu @change="changeMenu"></PMenu>
-			<component :is="boards[menuName]"></component>
+			<component :is="boards[menuName]" v-if="config"></component>
 		</div>
 	</DragReagon>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { ComputerTwotone, BookmarksTwotone } from '@vicons/material'
 import DragReagon from '@/components/DragReagon.vue'
 import PMenu from './left-menu.vue'
 import { ref, provide, computed } from 'vue'
 
+// 批量引入设置页面的组件,不同项的配置通过name来渲染对应的component
 const boardFiles = import.meta.globEager('./boards/*.vue')
 const boards = {}
 Object.keys(boardFiles).forEach(key => {
 	const name = key.replace('./boards/', '').replace('.vue', '')
 	boards[name] = boardFiles[key].default
 })
-console.log(boards)
 
 const icons = {
 	ComputerTwotone,
@@ -28,12 +29,12 @@ const icons = {
 
 const menuData = [
 	{
-		title: '通用',
+		title: 'menu.common',
 		name: 'common',
 		icon: 'ComputerTwotone',
 	},
 	{
-		title: '已安装插件',
+		title: 'menu.plugin',
 		name: 'plugins',
 		icon: 'BookmarksTwotone',
 	},
@@ -45,6 +46,12 @@ provide('icons', icons)
 provide('menuData', menuData)
 provide('menuName', menuName)
 const changeMenu = index => (selectedKey.value = index)
+
+const config = ref(null)
+window.pp.getConfig().then(d => {
+	config.value = d
+})
+provide('config', config)
 </script>
 
 <style lang="scss" scoped>

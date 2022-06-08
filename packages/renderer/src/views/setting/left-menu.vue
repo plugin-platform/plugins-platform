@@ -9,7 +9,7 @@
 			<n-icon size="16">
 				<component :is="icons[item.icon]"></component>
 			</n-icon>
-			<div>{{ item.title }}</div>
+			<div>{{ $t(item.title) }}</div>
 		</div>
 	</div>
 </template>

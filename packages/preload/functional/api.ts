@@ -1,13 +1,20 @@
 import { ipcRenderer, contextBridge, shell } from 'electron'
 import * as os from 'os'
 
-export function useApi() {
+export function useRendererApi() {
 	const invoke = (type, data?: any) => ipcRenderer.invoke('msg-trigger', { type, data })
+	const sendSync = (type, data?: any) => ipcRenderer.sendSync('msg-trigger', { type, data })
 
 	const pp: any = {
 		hooks: {},
 		onPluginReady(cb) {
 			typeof cb === 'function' && (pp.hooks.onPluginEnter = cb)
+		},
+		startup(flag) {
+			return invoke('startup', flag)
+		},
+		getConfig() {
+			return invoke('getConfig')
 		},
 		moveMainWindow(params) {
 			return ipcRenderer.send('move-window', params)
@@ -36,6 +43,7 @@ export function useApi() {
 		db: {
 			put: data => invoke('dbPut', { data }),
 			get: id => invoke('dbGet', { id }),
+			getSync: id => sendSync('dbGetSync', { id }),
 			remove: doc => invoke('dbRemove', { doc }),
 			bulkDocs: docs => invoke('dbBulkDocs', { docs }),
 			allDocs: key => invoke('dbAllDocs', { key }),
