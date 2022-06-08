@@ -9,10 +9,12 @@ import {
 	shell,
 } from 'electron'
 import fs from 'fs'
+import path from 'path'
 import { DB } from '../db'
 import plist from 'plist'
 
-const dbInstance = new DB(app.getPath('userData'))
+const dbpath = path.resolve(app.getPath('userData'), './pouchdb')
+const dbInstance = new DB(dbpath)
 dbInstance.init()
 
 const API: any = {
@@ -27,6 +29,9 @@ const API: any = {
 		app.setLoginItemSettings({
 			openAtLogin: data,
 		})
+	},
+	setWindowSize({ data }, win) {
+		win.setSize(data.width, data.height)
 	},
 
 	showNotification({ data: { body } }) {

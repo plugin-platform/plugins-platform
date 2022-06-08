@@ -16,6 +16,9 @@ export function useRendererApi() {
 		getConfig() {
 			return invoke('getConfig')
 		},
+		setWindowSize(params) {
+			return invoke('setWindowSize', params)
+		},
 		moveMainWindow(params) {
 			return ipcRenderer.send('move-window', params)
 		},

@@ -47,6 +47,7 @@ provide('menuData', menuData)
 provide('menuName', menuName)
 const changeMenu = index => (selectedKey.value = index)
 
+// 应用的设置
 const config = ref(null)
 window.pp.getConfig().then(d => {
 	config.value = d
@@ -59,7 +60,7 @@ provide('config', config)
 	font-family: Alibaba, Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	height: 600px;
+	min-height: 600px;
 	background-color: $bg;
 	display: grid;
 	grid-template-columns: auto 1fr;

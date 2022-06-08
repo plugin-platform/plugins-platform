@@ -9,6 +9,7 @@ export function createMainWindow(): BrowserWindow {
 		uniqueId: 'index',
 		title: 'Main window',
 		show: true,
+		resizable: false,
 		// skipTaskbar: true,
 		webPreferences: {
 			nodeIntegration: true,

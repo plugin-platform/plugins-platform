@@ -10,7 +10,10 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { darkTheme, zhCN, dateZhCN } from 'naive-ui'
+
+const router = useRouter()
 
 const themeOverrides = {
 	common: {
@@ -23,4 +26,14 @@ const themeOverrides = {
 		railColorActive: '#0275d8',
 	},
 }
+
+window.addEventListener('keydown', event => {
+	switch (event.code) {
+		case 'Escape': {
+			if (router.currentRoute.value.name === 'setting') {
+				router.push('/')
+			}
+		}
+	}
+})
 </script>

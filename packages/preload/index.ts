@@ -1,4 +1,4 @@
-import { domReady, useLoading, useAutoResize, useRendererApi } from './functional'
+import { domReady, useLoading, useRendererApi } from './functional'
 import { lstat } from 'fs/promises'
 import { cwd } from 'process'
 import { ipcRenderer, contextBridge } from 'electron'
@@ -20,4 +20,4 @@ lstat(cwd())
 
 contextBridge.exposeInMainWorld('removeLoading', removeLoading)
 
-domReady().then(useRendererApi).then(useAutoResize).then(appendLoading)
+domReady().then(useRendererApi).then(appendLoading)
