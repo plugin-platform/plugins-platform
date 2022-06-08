@@ -1,23 +1,13 @@
-# plugin-platform
+# PP(plugin-platform)
 
 **[English](README.md) | 简体中文**
 
-🥳 插件平台 -- **结构简单，容易上手！**
+使用 `nodejs` 来开发插件
 
 ## 概述
 
-📦 开箱即用  
 💪 使用 `nodejs` 开发小工具  
-🔩 没有审核，自定义的工具库
-🌱 结构清晰，可塑性强
-
-## 功能清单
-
-|   主要任务   | 完成状况                                 |
-| :----------: | :--------------------------------------- |
-|   UI 界面    | <input type="checkbox" checked>10%       |
-| 启动一个插件 | <input type="checkbox" disabled>暂未开发 |
-| 完善插件逻辑 | <input type="checkbox" disabled>暂未开发 |
+🔩 没有审核，输入`url`来安装工具
 
 ## 目录结构
 
