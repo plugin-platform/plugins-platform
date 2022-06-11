@@ -1,4 +1,4 @@
-import { languages } from './../index';
+import { languages } from './../index'
 export default {
 	menu: {
 		common: 'common',
@@ -6,6 +6,7 @@ export default {
 	},
 	dashboard: {
 		startup: 'start with system',
-		language: 'language'
+		language: 'language',
+		notInstall: 'not installed',
 	},
 }

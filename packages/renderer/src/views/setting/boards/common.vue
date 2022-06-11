@@ -1,5 +1,16 @@
 <template>
 	<div class="setting-board">
+		<div class="line-item flex fyc xgap-10">
+			<n-card title="node" size="small">
+				{{ config.common.hasNode || $t(notInstall) }}
+			</n-card>
+			<n-card title="yarn" size="small">
+				{{ config.common.hasYarn || $t(notInstall) }}
+			</n-card>
+			<n-card title="pnpm" size="small">
+				{{ config.common.hasPnpm || $t(notInstall) }}
+			</n-card>
+		</div>
 		<div class="line-item flex fxsb fyc">
 			<div class="name">{{ $t('dashboard.startup') }}</div>
 			<n-switch :value="config.common.startup" @update:value="updateVal" />
@@ -20,6 +31,7 @@ import { inject, ref } from 'vue'
 import i18n, { languages, getLocale } from '@/locales'
 
 const config = inject('config')
+const notInstall = 'dashboard.notInstall'
 
 const updateVal = val => {
 	config.value.common.startup = val
@@ -56,7 +68,10 @@ const whenLanguageChange = key => {
 	font-size: 16px;
 	.line-item {
 		width: 100%;
-		height: 50px;
+		margin: 20px auto;
+		&:first-child {
+			margin-top: 0;
+		}
 	}
 	.select {
 		display: grid;

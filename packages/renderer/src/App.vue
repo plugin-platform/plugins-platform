@@ -25,6 +25,9 @@ const themeOverrides = {
 	Switch: {
 		railColorActive: '#0275d8',
 	},
+	Card: {
+		color: 'transparent',
+	},
 }
 
 window.addEventListener('keydown', event => {

@@ -5,6 +5,7 @@ export default {
 	},
 	dashboard: {
 		startup: '开机启动',
-		language: '语言'
+		language: '语言',
+		notInstall: '未安装',
 	},
 }

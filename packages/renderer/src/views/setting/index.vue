@@ -3,6 +3,7 @@
 		<div class="container">
 			<PMenu @change="changeMenu"></PMenu>
 			<component :is="boards[menuName]" v-if="config"></component>
+			<Loading v-else></Loading>
 		</div>
 	</DragReagon>
 </template>
@@ -12,6 +13,7 @@ import { useI18n } from 'vue-i18n'
 import { ComputerTwotone, BookmarksTwotone } from '@vicons/material'
 import DragReagon from '@/components/DragReagon.vue'
 import PMenu from './left-menu.vue'
+import Loading from './loading.vue'
 import { ref, provide, computed } from 'vue'
 
 // 批量引入设置页面的组件,不同项的配置通过name来渲染对应的component
@@ -60,7 +62,7 @@ provide('config', config)
 	font-family: Alibaba, Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	min-height: 600px;
+	height: 600px;
 	background-color: $bg;
 	display: grid;
 	grid-template-columns: auto 1fr;

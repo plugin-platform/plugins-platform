@@ -12,6 +12,7 @@ import fs from 'fs'
 import path from 'path'
 import { DB } from '../db'
 import plist from 'plist'
+import { getConfig } from './getConfig'
 
 const dbpath = path.resolve(app.getPath('userData'), './pouchdb')
 const dbInstance = new DB(dbpath)
@@ -83,14 +84,7 @@ const API: any = {
 	getPath({ data }) {
 		return app.getPath(data)
 	},
-	getConfig() {
-		const loginInfo = app.getLoginItemSettings()
-		return {
-			common: {
-				startup: loginInfo.openAtLogin,
-			},
-		}
-	},
+	getConfig,
 }
 
 export function useMainApi() {
