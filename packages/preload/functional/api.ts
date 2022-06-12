@@ -5,6 +5,13 @@ export function useRendererApi() {
 	const invoke = (type, data?: any) => ipcRenderer.invoke('msg-trigger', { type, data })
 	const sendSync = (type, data?: any) => ipcRenderer.sendSync('msg-trigger', { type, data })
 
+	const simplifyApi = pp => {
+		const keys = ['hasNode', 'hasPnpm', 'hasYarn']
+		keys.forEach(item => {
+			pp[item] = () => invoke(item)
+		})
+	}
+
 	const pp: any = {
 		hooks: {},
 		onPluginReady(cb) {
@@ -92,6 +99,8 @@ export function useRendererApi() {
 			return os.type() === 'Linux'
 		},
 	}
+
+	simplifyApi(pp)
 
 	contextBridge.exposeInMainWorld('pp', pp)
 }

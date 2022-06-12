@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 const routes = [
 	{
 		name: 'index',
-		path: '/',
+		path: '/index',
 		meta: {
 			size: {
 				width: 800,

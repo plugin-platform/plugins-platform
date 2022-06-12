@@ -1,19 +1,19 @@
 <template>
 	<div class="setting-board">
 		<div class="line-item flex fyc xgap-10">
-			<n-card title="node" size="small">
-				{{ config.common.hasNode || $t(notInstall) }}
+			<n-card title="node" size="small" @click="updateHasNode" :hoverable="true">
+				{{ common.hasNode || $t(notInstall) }}
 			</n-card>
-			<n-card title="yarn" size="small">
-				{{ config.common.hasYarn || $t(notInstall) }}
+			<n-card title="yarn" size="small" @click="updateHasYarn" :hoverable="true">
+				{{ common.hasYarn || $t(notInstall) }}
 			</n-card>
-			<n-card title="pnpm" size="small">
-				{{ config.common.hasPnpm || $t(notInstall) }}
+			<n-card title="pnpm" size="small" @click="updateHasPnpm" :hoverable="true">
+				{{ common.hasPnpm || $t(notInstall) }}
 			</n-card>
 		</div>
 		<div class="line-item flex fxsb fyc">
 			<div class="name">{{ $t('dashboard.startup') }}</div>
-			<n-switch :value="config.common.startup" @update:value="updateVal" />
+			<n-switch :value="common.startup" @update:value="updateVal" />
 		</div>
 		<div class="line-item select flex fxsb fyc">
 			<div class="name">{{ $t('dashboard.language') }}</div>
@@ -27,16 +27,35 @@
 </template>
 
 <script setup>
-import { inject, ref } from 'vue'
+import { inject, ref, computed } from 'vue'
 import i18n, { languages, getLocale } from '@/locales'
 
 const config = inject('config')
 const notInstall = 'dashboard.notInstall'
+const common = computed(() => config.value.common)
 
 const updateVal = val => {
 	config.value.common.startup = val
 	window.pp.startup(config.value.common.startup)
 }
+
+const updateHasNode = () => {
+	common.value.hasNode = null
+	window.pp.hasNode().then(r => (common.value.hasNode = r))
+}
+const updateHasYarn = () => {
+	common.value.hasYarn = null
+	window.pp.hasYarn().then(r => (common.value.hasYarn = r))
+}
+const updateHasPnpm = () => {
+	common.value.hasPnpm = null
+	window.pp.hasPnpm().then(r => (common.value.hasPnpm = r))
+}
+;(() => {
+	updateHasNode()
+	updateHasYarn()
+	updateHasPnpm()
+})()
 
 const keymap = {
 	en: 'English',

@@ -34,7 +34,7 @@ window.addEventListener('keydown', event => {
 	switch (event.code) {
 		case 'Escape': {
 			if (router.currentRoute.value.name === 'setting') {
-				router.push('/')
+				router.push('/index')
 			}
 		}
 	}

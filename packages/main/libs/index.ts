@@ -2,4 +2,8 @@ export * from './HasNode'
 export * from './HasYarn'
 export * from './HasPnpm'
 export * from './Utils'
-export * from './WindowsManager'
+
+export function getEnv(key) {
+	const env = process.env
+	return env[key]
+}

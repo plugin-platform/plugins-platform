@@ -1,19 +1,18 @@
 import { app, BrowserWindow, shell } from 'electron'
-import { WindowsManager, ConfigTypes } from './libs/WindowsManager'
 import { join } from 'path'
+import { getEnv } from './libs'
 
 export function createMainWindow(): BrowserWindow {
-	setWindowThreadPoolParameters()
-	const win = WindowsManager.createWindow({
-		page: 'index',
-		uniqueId: 'index',
-		title: 'Main window',
+	const win = new BrowserWindow({
 		show: true,
+		frame: false,
 		resizable: false,
+		transparent: true,
 		// skipTaskbar: true,
 		webPreferences: {
-			nodeIntegration: true,
-			contextIsolation: false,
+			nodeIntegration: false,
+			contextIsolation: true,
+			preload: join(__dirname, '../preload/index.cjs'),
 		},
 	})
 
@@ -21,8 +20,9 @@ export function createMainWindow(): BrowserWindow {
 		win.loadFile(join(__dirname, '../renderer/index.html'))
 	} else {
 		// 🚧 Use ['ENV_NAME'] avoid vite:define plugin
-		const url = `http://${process.env['VITE_DEV_SERVER_HOST']}:${process.env['VITE_DEV_SERVER_PORT']}`
-
+		const host = getEnv('VITE_DEV_SERVER_HOST')
+		const port = getEnv('VITE_DEV_SERVER_PORT')
+		const url = `http://${host}:${port}/#/index`
 		win.loadURL(url)
 		win.webContents.openDevTools()
 	}
@@ -38,20 +38,4 @@ export function createMainWindow(): BrowserWindow {
 		return { action: 'deny' }
 	})
 	return win
-}
-
-function setWindowThreadPoolParameters() {
-	const schemaOptions = [
-		{
-			page: 'index',
-			limit: 1,
-			config: ConfigTypes.WindowConfig,
-		},
-		{
-			page: 'setting',
-			limit: 1,
-			config: ConfigTypes.WindowConfig,
-		},
-	]
-	WindowsManager.prepare(schemaOptions)
 }
