@@ -6,9 +6,9 @@ export function createMainWindow(): BrowserWindow {
 	const win = new BrowserWindow({
 		show: true,
 		frame: false,
-		resizable: false,
+		resizable: true,
 		transparent: true,
-		// skipTaskbar: true,
+		skipTaskbar: false,
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,
