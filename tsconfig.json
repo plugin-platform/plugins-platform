@@ -16,6 +16,6 @@
 		"skipLibCheck": true,
 		"noImplicitAny": false
 	},
-	"include": ["packages/**/*.ts", "packages/**/*.tsx", "packages/**/*.vue"],
+	"include": ["packages/**/*.ts", "packages/**/*.tsx"],
 	"exclude": ["prettier.config.js", "node_modules", "scripts/*.mjs"]
 }

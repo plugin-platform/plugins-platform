@@ -9,7 +9,7 @@
 	</DragReagon>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { SettingsRound } from '@vicons/material'
 import DragReagon from '@/components/DragReagon.vue'
 import Search from './search.vue'

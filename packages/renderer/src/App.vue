@@ -9,7 +9,7 @@
 	</n-config-provider>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { useRouter } from 'vue-router'
 import { darkTheme, zhCN, dateZhCN } from 'naive-ui'
 
