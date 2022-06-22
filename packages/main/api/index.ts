@@ -13,7 +13,7 @@ import path from 'path'
 import { DB } from '../db'
 import plist from 'plist'
 import { getConfig } from './getConfig'
-import { hasNode, hasYarn, hasPnpm } from '../libs'
+import { hasNode, hasYarn, hasPnpm, hasGit } from '../libs'
 
 const dbpath = path.resolve(app.getPath('userData'), './pouchdb')
 const dbInstance = new DB(dbpath)
@@ -89,6 +89,7 @@ const API: any = {
 	hasNode,
 	hasPnpm,
 	hasYarn,
+	hasGit,
 }
 
 export function useMainApi() {

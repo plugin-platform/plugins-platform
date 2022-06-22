@@ -10,6 +10,9 @@
 			<n-card title="pnpm" size="small" @click="updateHasPnpm" :hoverable="true">
 				{{ common.hasPnpm || $t(notInstall) }}
 			</n-card>
+			<n-card title="git" size="small" @click="updateHasGit" :hoverable="true">
+				{{ common.hasGit || $t(notInstall) }}
+			</n-card>
 		</div>
 		<div class="line-item flex fxsb fyc">
 			<div class="name">{{ $t('dashboard.startup') }}</div>
@@ -51,10 +54,15 @@ const updateHasPnpm = () => {
 	common.value.hasPnpm = null
 	window.pp.hasPnpm().then(r => (common.value.hasPnpm = r))
 }
+const updateHasGit = () => {
+	common.value.hasPnpm = null
+	window.pp.hasGit().then(r => (common.value.hasGit = r))
+}
 ;(() => {
 	updateHasNode()
 	updateHasYarn()
 	updateHasPnpm()
+	updateHasGit()
 })()
 
 const keymap = {

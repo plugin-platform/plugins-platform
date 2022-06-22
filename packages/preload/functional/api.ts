@@ -6,9 +6,21 @@ export function useRendererApi() {
 	const sendSync = (type, data?: any) => ipcRenderer.sendSync('msg-trigger', { type, data })
 
 	const simplifyApi = pp => {
-		const keys = ['hasNode', 'hasPnpm', 'hasYarn']
+		const keys = [
+			'hasNode', // 验证node环境
+			'hasPnpm', // 验证pnpm
+			'hasYarn', // 验证yarn
+			'hasGit', // 验证git
+			'hideMainWindow', // 隐藏主窗口
+			'showMainWindow', // 显示主窗口
+			'startup', // 开机启动
+			'getConfig', // 获取应用设置
+			'setWindowSize', // 设置窗口大小
+			'getPath', // 获取app位置
+			'shellBeep',
+		]
 		keys.forEach(item => {
-			pp[item] = () => invoke(item)
+			pp[item] = params => invoke(item, params)
 		})
 	}
 
@@ -17,26 +29,8 @@ export function useRendererApi() {
 		onPluginReady(cb) {
 			typeof cb === 'function' && (pp.hooks.onPluginEnter = cb)
 		},
-		startup(flag) {
-			return invoke('startup', flag)
-		},
-		getConfig() {
-			return invoke('getConfig')
-		},
-		setWindowSize(params) {
-			return invoke('setWindowSize', params)
-		},
 		moveMainWindow(params) {
 			return ipcRenderer.send('move-window', params)
-		},
-		hideMainWindow() {
-			return invoke('hideMainWindow')
-		},
-		showMainWindow() {
-			return invoke('showMainWindow')
-		},
-		getPath(name) {
-			return invoke('getPath', name)
 		},
 		showNotification(body, clickFeatureCode) {
 			return invoke('showNotification', { body, clickFeatureCode })
@@ -82,9 +76,6 @@ export function useRendererApi() {
 		},
 		shellOpenPath(path) {
 			shell.openPath(path)
-		},
-		shellBeep: () => {
-			invoke('shellBeep')
 		},
 
 		isMacOs() {
