@@ -1,9 +1,10 @@
 module.exports = {
+	arrowParens: 'avoid',
+	bracketSpacing: true,
+	endOfLine: 'lf',
 	printWidth: 100,
-	tabWidth: 4, //缩进长度
-	useTabs: true, //使用空格代替tab缩进
 	singleQuote: true,
 	semi: false,
-	endOfLine: 'lf',
-	arrowParens: 'avoid',
+	tabWidth: 4, //缩进长度
+	useTabs: true, //使用空格代替tab缩进
 }

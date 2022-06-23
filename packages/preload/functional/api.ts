@@ -7,16 +7,17 @@ export function useRendererApi() {
 
 	const simplifyApi = pp => {
 		const keys = [
+			'getConfig', // 获取应用设置
+			'getPath', // 获取app位置
 			'hasNode', // 验证node环境
 			'hasPnpm', // 验证pnpm
 			'hasYarn', // 验证yarn
 			'hasGit', // 验证git
 			'hideMainWindow', // 隐藏主窗口
+			'installPlugin', // 安装插件
 			'showMainWindow', // 显示主窗口
-			'startup', // 开机启动
-			'getConfig', // 获取应用设置
 			'setWindowSize', // 设置窗口大小
-			'getPath', // 获取app位置
+			'startup', // 开机启动
 			'shellBeep',
 		]
 		keys.forEach(item => {

@@ -16,6 +16,6 @@
 		"skipLibCheck": true,
 		"noImplicitAny": false
 	},
-	"include": ["packages/**/*.ts", "packages/**/*.tsx"],
+	"include": ["packages/preload/**/*.ts", "packages/main/**/*.tsx"],
 	"exclude": ["prettier.config.js", "node_modules", "scripts/*.mjs"]
 }

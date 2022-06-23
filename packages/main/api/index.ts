@@ -14,6 +14,7 @@ import { DB } from '../db'
 import plist from 'plist'
 import { getConfig } from './getConfig'
 import { hasNode, hasYarn, hasPnpm, hasGit } from '../libs'
+import { installPlugin } from './core'
 
 const dbpath = path.resolve(app.getPath('userData'), './pouchdb')
 const dbInstance = new DB(dbpath)
@@ -22,7 +23,7 @@ dbInstance.init()
 const API: any = {
 	currentPlugin: null,
 	DBKEY: 'RUBICK_DB_DEFAULT',
-	installPlugin() {},
+	installPlugin,
 	mountPlugin() {},
 	unMountPlugin() {},
 	uninstallPlugin() {},

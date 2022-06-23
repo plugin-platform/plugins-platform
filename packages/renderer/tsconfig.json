@@ -1,5 +1,4 @@
 {
-	"extends": "../../tsconfig.json",
 	"compilerOptions": {
 		"target": "esnext",
 		"allowJs": true,
@@ -14,5 +13,5 @@
 		"lib": ["esnext", "dom"],
 		"types": ["naive-ui/volar"]
 	},
-	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"]
+	"include": ["src/**/*.ts", "src/**/*.d.ts"]
 }

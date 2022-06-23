@@ -1,16 +1,32 @@
 <template>
 	<div class="input-holder">
-		<input class="search" ref="inputDom" type="text" @input="onInput" v-model="val" />
+		<input
+			class="search"
+			ref="inputDom"
+			type="text"
+			@input="onInput"
+			@keydown.enter="execute"
+			v-model="val"
+		/>
+		<n-tag type="success" size="small" round v-if="tag"> {{ tag }} </n-tag>
 	</div>
 </template>
 
 <script setup>
-import { ref, onMounted, reactive } from 'vue'
+import { ref, onMounted, reactive, computed } from 'vue'
 
 const val = ref('')
 const inputDom = ref()
 const state = reactive({
 	mode: null,
+})
+
+const tag = computed(() => {
+	const tags = {
+		git: '从git拉取',
+		local: '本地链接',
+	}
+	return tags[state.mode]
 })
 
 onMounted(() => {
@@ -26,6 +42,16 @@ const onInput = () => {
 		if (reg.test(text)) {
 			state.mode = 'local'
 		}
+	}
+}
+window.pp.copyText('git@github.com:plugin-platform/pp-demo.git')
+const execute = () => {
+	switch (state.mode) {
+		case 'git':
+			return window.pp.installPlugin({
+				mode: 'git',
+				url: val.value,
+			})
 	}
 }
 </script>
@@ -44,5 +70,11 @@ const onInput = () => {
 }
 .input-holder {
 	position: relative;
+	.n-tag {
+		position: absolute;
+		right: 20px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
 }
 </style>
