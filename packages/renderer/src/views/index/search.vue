@@ -46,6 +46,7 @@ const onInput = () => {
 }
 window.pp.copyText('git@github.com:plugin-platform/pp-demo.git')
 const execute = () => {
+	console.log(state.mode)
 	switch (state.mode) {
 		case 'git':
 			return window.pp.installPlugin({

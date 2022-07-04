@@ -17,3 +17,5 @@ export async function hasGit() {
 			return null
 		})
 }
+
+global.config.library.git = hasGit()

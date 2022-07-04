@@ -1,6 +1,7 @@
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import { app, BrowserWindow } from 'electron'
 import { release } from 'os'
+import './preset'
 import { createMainWindow } from './window'
 import { useIPC } from './ipc'
 import { useMainApi } from './api'

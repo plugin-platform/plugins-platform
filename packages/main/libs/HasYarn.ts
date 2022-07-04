@@ -19,3 +19,4 @@ export async function hasYarn() {
 			return null
 		})
 }
+global.config.library.yarn = hasYarn()

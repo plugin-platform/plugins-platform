@@ -16,3 +16,4 @@ export async function hasNode() {
 			return null
 		})
 }
+global.config.library.node = hasNode()

@@ -15,7 +15,5 @@
 		"allowSyntheticDefaultImports": true,
 		"skipLibCheck": true,
 		"noImplicitAny": false
-	},
-	"include": ["packages/preload/**/*.ts", "packages/main/**/*.tsx"],
-	"exclude": ["prettier.config.js", "node_modules", "scripts/*.mjs"]
+	}
 }
