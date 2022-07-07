@@ -19,4 +19,4 @@ export async function hasPnpm() {
 			return null
 		})
 }
-global.config.library.node = hasPnpm()
+global.$state.library.node = hasPnpm()

@@ -12,7 +12,7 @@ import fs from 'fs'
 import path from 'path'
 import { DB } from '../db'
 import plist from 'plist'
-import { getConfig } from './getConfig'
+import { getAppList, getConfig } from './getInformation'
 import { hasNode, hasYarn, hasPnpm, hasGit } from '../libs'
 import { installPlugin } from './core'
 
@@ -87,6 +87,7 @@ const API: any = {
 		return app.getPath(data)
 	},
 	getConfig,
+	getAppList,
 	hasNode,
 	hasPnpm,
 	hasYarn,

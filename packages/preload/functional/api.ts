@@ -7,6 +7,7 @@ export function useRendererApi() {
 
 	const simplifyApi = pp => {
 		const keys = [
+			'getAppList', // 获取安装的插件列表
 			'getConfig', // 获取应用设置
 			'getPath', // 获取app位置
 			'hasNode', // 验证node环境

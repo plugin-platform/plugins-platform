@@ -10,7 +10,6 @@ export async function hasGit() {
 		},
 	})
 		.then(d => {
-			console.log(d.raw)
 			return d.raw.replace('git version ', '')
 		})
 		.catch(e => {
@@ -18,4 +17,4 @@ export async function hasGit() {
 		})
 }
 
-global.config.library.git = hasGit()
+global.$state.library.git = hasGit()

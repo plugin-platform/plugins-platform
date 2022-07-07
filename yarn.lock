@@ -2913,6 +2913,11 @@ through2@3.0.2:
     inherits "^2.0.4"
     readable-stream "2 || 3"
 
+tiny-emitter@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
+  integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
+
 tmp-promise@^3.0.2:
   version "3.0.3"
   resolved "https://registry.npmmirror.com/tmp-promise/-/tmp-promise-3.0.3.tgz#60a1a1cc98c988674fcbfd23b6e3367bdeac4ce7"

@@ -11,3 +11,7 @@ export async function getConfig() {
 		},
 	}
 }
+
+export function getAppList() {
+	return global.$state.plugins
+}
